@@ -1,0 +1,10 @@
+<section class="post-overview">
+	<a href="{{ include.post.url }}">
+		<h2>{{ include.post.title }}</h2>
+	</a>
+	{{ include.post.excerpt }}
+	<div class="columns">
+		<a href="{{ include.post.url }}" class="expand">Read More...</a>
+		<span class="fade-out">{{ post.date | date: "%F" }}</span>
+	</div>
+</section>

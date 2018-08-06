@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<article>
+	<a name="article" class="columns vertical-align">
+		<h1 class="right-pad">{{ page.title }}</h1>
+		<span class="fade-out">
+			{{ page.date | date: "%F" }}
+		</span>
+	</a>
+	{{ page.content }}
+</article>
+<hr />
+<div class="previous-next">
+	{% if page.previous %}
+		<a href="{{ page.previous.url | relative_url }}">
+			{{ page.previous.title }}
+		</a>
+	{% else %}
+		<span class="fade-out">No Older Posts</span>
+	{% endif %}
+	{% if page.next %}
+		<a href="{{ page.next.url | relative_url }}">
+			{{ page.next.title }}
+		</a>
+	{% else %}
+		<span class="fade-out">No Newer Posts</span>
+	{% endif %}
+</div>

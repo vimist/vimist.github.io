@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ site.title }}{% if page %} - {{ page.title }}{% endif %}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="{{ '/assets/main.css' | relative_path }}" />
+	</head>
+	<body>
+		<section class="sidebar">
+			<h1 class="flashing-prompt">{{ site.title }}</h1>
+			<hr />
+			{{ site.description | newline_to_br }}
+			<hr />
+			<nav>
+				<ul class="plain-list">
+					{% assign sorted_pages = site.pages | sort:"menu_order" %}
+					{% for page in sorted_pages %}
+						{% if page.show_in_menu != false %}
+							<li><a href="{{ page.url | relative_path }}">{{ page.title }}</a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+
+				<h2>Post Tags</h2>
+				<ul>
+					{% assign sorted_tags = site.tags | sort %}
+					{% for tag in sorted_tags %}
+					<li>
+						<a href="{{ "/tags.html#" | append: tag.first | downcase | relative_path }}">
+							{{- tag.first -}}
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</nav>
+		</section>
+		<main>
+			{{ content }}
+		</main>
+	</body>
+</html>

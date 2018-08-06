@@ -1,0 +1,14 @@
+---
+layout: default
+---
+{% assign sorted_tags = site.tags | sort %}
+{% for tag in sorted_tags %}
+	<section>
+		<a name="{{ tag.first | downcase }}"><h1>{{ tag.first }}</h1></a>
+		<ol class="plain-list">
+			{% for post in site.tags[tag.first] %}
+				<li>{% include post_overview.html post=post %}</li>
+			{% endfor %}
+		</ol>
+	</section>
+{% endfor %}

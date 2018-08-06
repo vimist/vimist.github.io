@@ -1,0 +1,5 @@
+<ol class="plain-list dividing-border">
+	{% for post in site.posts %}
+		<li>{% include post_overview.html post=post %}</li>
+	{% endfor %}
+</ol>

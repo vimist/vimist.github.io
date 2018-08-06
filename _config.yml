@@ -1,0 +1,8 @@
+title: "# 0xC0de"
+description: Exploring the elegance of the small stuff.
+
+defaults:
+  - scope:
+      path: _posts
+    values:
+      layout: post
