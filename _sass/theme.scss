@@ -118,7 +118,7 @@ a[href] {
 pre.highlight { // Blocks of code
 	padding: $padding/2;
 
-	overflow-x: scroll;
+	overflow-x: auto;
 }
 
 code[class] { // Inline code
