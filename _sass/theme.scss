@@ -4,6 +4,9 @@ $fade-col: rgba($fg-col, 0.2);
 
 $link-color: #356DF5;
 
+$col1: #fad07a;
+$col2: #8197bf;
+
 $font-size: 11pt;
 $padding: 20px;
 
@@ -81,30 +84,67 @@ section.post-overview {
 	}
 }
 
-// Typeography and other elements
+// Typography and other elements
 
 h1 { font-size: 1.5rem; }
 h2 { font-size: 1.25rem; }
 h3 { font-size: 1.0rem; }
 
+h1, h2, h3 {
+	clear: both;
+}
+
 i,
 em {
-	color: #fad07a;
+	color: $col1;
 }
 
 b,
 strong {
-	color: #8197bf;
+	color: $col2;
 }
 
 blockquote {
-	& > p {
-		padding: $padding/2;
-	}
+	margin: 0px;
+	margin-left: $padding;
 
 	font-style: italic;
 	background-color: $bg-col;
 	border-left: 2px $fade-col solid;
+
+	& > p {
+		margin: 0px;
+		padding: $padding/2;
+	}
+
+	cite {
+		&::before {
+			content: " - ";
+		}
+
+		color: $col2;
+	}
+}
+
+aside {
+	&::before {
+		display: block;
+
+		color: $col1;
+		content: "Side Note:";
+	}
+
+	float: right;
+	width: 40%;
+
+	margin: 0px 0px $padding $padding;
+	padding: $padding*0.75;
+
+	border: 1px $fade-col dashed;
+
+	& > *:last-child {
+		margin-bottom: 0px;
+	}
 }
 
 a[href] {
@@ -115,6 +155,10 @@ a[href] {
 	}
 }
 
+div.highlight {
+	display: inline;
+}
+
 pre.highlight { // Blocks of code
 	padding: $padding/2;
 
@@ -122,7 +166,7 @@ pre.highlight { // Blocks of code
 }
 
 code[class] { // Inline code
-	padding: 4px 7px;
+	padding: 1px 5px;
 	background-color: $bg-col;
 }
 
@@ -135,6 +179,7 @@ nav {
 
 hr {
 	margin: $padding 0px;
+	clear: both;
 
 	border: 0px;
 	border-bottom: 1px $fade-col solid;
@@ -229,9 +274,10 @@ li {
 	main {
 		margin-left: 0px;
 	}
-}
 
-@media (max-width: 500px) {
-	section.post-overview > div.columns {
+	aside {
+		width: auto;
+		float: none;
+		margin: 0px;
 	}
 }

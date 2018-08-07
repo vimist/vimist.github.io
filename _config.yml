@@ -1,8 +1,28 @@
 title: "# 0xC0de"
 description: Exploring the elegance of the small stuff.
 
+markdown: kramdown
+kramdown: 
+  smart_quotes:
+    - apos
+    - apos
+    - quot
+    - quot
+  typographic_symbols:
+    hellip: '...'
+    mdash: '-'
+    ndash: '-'
+    laquo: '<<'
+    raquo: '>>'
+
+  parse_block_html: true
+
 defaults:
   - scope:
       path: _posts
+    values:
+      layout: post
+  - scope:
+      path: _drafts
     values:
       layout: post
