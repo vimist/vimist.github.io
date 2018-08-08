@@ -20,6 +20,7 @@ var Raindrop = function() {
 		}
 
 		this.y += ellapsed_time * this.speed;
+		this.speed += 0.0001;
 
 		var floor = this.terrain[this.x];
 		if (this.y >= floor) {
