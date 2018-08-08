@@ -1,5 +1,6 @@
 $bg-col: #0A0A0A;
 $fg-col: darken(invert($bg-col), 10);
+$light-bg-col: lighten($bg-col, 4);
 $fade-col: rgba($fg-col, 0.2);
 
 $link-color: #356DF5;
@@ -44,7 +45,7 @@ main {
 	margin-left: $sidebar-width;
 	padding: $padding;
 
-	background-color: lighten($bg-col, 4);
+	background-color: $light-bg-col;
 }
 
 section.post-overview {
@@ -63,6 +64,11 @@ section.post-overview {
 		margin: 0px;
 
 		word-wrap: none;
+	}
+
+	blockquote,
+	code[class] {
+		background-color: $light-bg-col;
 	}
 }
 
@@ -94,14 +100,13 @@ h1, h2, h3 {
 	clear: both;
 }
 
-i,
-em {
+mark {
+	background-color: transparent;
 	color: $col1;
 }
 
-b,
-strong {
-	color: $col2;
+q {
+	quotes: '"' '"' "'" "'";
 }
 
 blockquote {
@@ -166,7 +171,8 @@ pre.highlight { // Blocks of code
 }
 
 code[class] { // Inline code
-	padding: 1px 5px;
+	padding: 1px 3px;
+	color: #c6b6ee;
 	background-color: $bg-col;
 }
 
