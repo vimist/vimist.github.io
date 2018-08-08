@@ -1,0 +1,26 @@
+body {
+	overflow-x: hidden;
+	background-color: transparent;
+}
+
+section.sidebar {
+	z-index: 10;
+}
+
+main {
+	z-index: 10;
+	position: relative;
+}
+
+canvas#rain {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+
+	margin: 0px;
+	padding: 0px;
+
+	z-index: 0;
+
+	background-color: $bg-col;
+}
