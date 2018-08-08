@@ -1,6 +1,8 @@
 title: "# 0xC0de"
 description: Exploring the elegance of the small stuff.
 
+excerpt_separator: <!-- more -->
+
 markdown: kramdown
 kramdown: 
   smart_quotes:
@@ -16,6 +18,7 @@ kramdown:
     raquo: '>>'
 
   parse_block_html: true
+  parse_span_html: true
 
 defaults:
   - scope:
