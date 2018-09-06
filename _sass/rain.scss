@@ -5,6 +5,11 @@ body {
 
 section.sidebar {
 	z-index: 10;
+	pointer-events: none;
+
+	* {
+		pointer-events: all;
+	}
 }
 
 main {
