@@ -1,3 +1,4 @@
+// Model a single "raindrop" within the grid
 var Raindrop = function() {
 	function Raindrop(cxt, grid_size, terrain, x, y) {
 		this.cxt = cxt;
@@ -13,8 +14,8 @@ var Raindrop = function() {
 		this.draw = this.draw.bind(this);
 	}
 
+	// Update the position of the "raindrop"
 	Raindrop.prototype.update = function(ellapsed_time) {
-		// Don't do any work unless we need to
 		if (this.speed === 0) {
 			return;
 		}
@@ -30,8 +31,8 @@ var Raindrop = function() {
 		}
 	};
 
-	// We draw the hash, because it's a pain to reliably get the font height
-	// The size is 10px square (hence the grid being 10px)
+	// Manually draw the hash, because it's a pain to reliably get the font
+	// height. The size is 10px square (hence the grid being 10px).
 	Raindrop.prototype.draw = function() {
 		// Make sure we draw to the grid
 		var x = parseInt(this.x / this.grid_size) * this.grid_size;
@@ -61,12 +62,14 @@ var Raindrop = function() {
 	return Raindrop;
 }();
 
+// Manage the entire thing
 var Game = function() {
 	function Game(cxt, width, height, grid_size) {
 		this.cxt = cxt;
 		this.width = width;
 		this.height = height;
 		this.grid_size = grid_size;
+		this.spawn_delay = 200; // This is a fun one to play with
 
 		this.last_update = 0;
 		this.last_added_drop = 0;
@@ -75,7 +78,7 @@ var Game = function() {
 		this.is_mouse_down = false;
 
 		this.raindrops = [];
-		this.terrain = [];
+		this.terrain = []; // Keep track of how much remaining space we have at each x position
 		for (var i = 0; i < this.width; i += 10) {
 			this.terrain[i] =
 				(parseInt(this.height / this.grid_size) * this.grid_size)
@@ -92,7 +95,6 @@ var Game = function() {
 	}
 
 	Game.prototype.mouse_move = function(event) {
-		// Map to the grid
 		this.cursor.x = event.clientX;
 		this.cursor.y = event.clientY;
 	};
@@ -107,16 +109,22 @@ var Game = function() {
 
 	Game.prototype.loop = function(time) {
 		// Add a drop if we have the mouse down and enough time has passed
-		if (this.is_mouse_down && time - this.last_added_drop > 200) {
-			var raindrop = new Raindrop(
-				this.cxt,
-				this.grid_size,
-				this.terrain,
-				parseInt(this.cursor.x / this.grid_size) * this.grid_size,
-				parseInt(this.cursor.y / this.grid_size) * this.grid_size);
-			this.raindrops.push(raindrop);
+		if (this.is_mouse_down && time - this.last_added_drop > this.spawn_delay) {
+			// Map the cursor position to a grid cell
+			var cursor_grid_x = parseInt(this.cursor.x / this.grid_size) * this.grid_size;
+			var cursor_grid_y = parseInt(this.cursor.y / this.grid_size) * this.grid_size;
 
-			this.last_added_drop = time;
+			if (this.terrain[cursor_grid_x] >= cursor_grid_y) {
+				var raindrop = new Raindrop(
+					this.cxt,
+					this.grid_size,
+					this.terrain,
+					cursor_grid_x,
+					cursor_grid_y);
+				this.raindrops.push(raindrop);
+
+				this.last_added_drop = time;
+			}
 		}
 
 		this.update(time - this.last_update);
