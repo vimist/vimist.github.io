@@ -51,10 +51,10 @@ section.post-overview {
 .highlight .nv  { color: #c6b6ee; } /* Name.Variable */
 .highlight .ow  { color: $fg-col; } /* Operator.Word */
 .highlight .w   { color: $fg-col; } /* Text.Whitespace */
-.highlight .mf  { color: $fg-col; } /* Literal.Number.Float */
-.highlight .mh  { color: $fg-col; } /* Literal.Number.Hex */
-.highlight .mi  { color: $fg-col; } /* Literal.Number.Integer */
-.highlight .mo  { color: $fg-col; } /* Literal.Number.Oct */
+.highlight .mf  { color: #d75f5f; } /* Literal.Number.Float */
+.highlight .mh  { color: #d75f5f; } /* Literal.Number.Hex */
+.highlight .mi  { color: #d75f5f; } /* Literal.Number.Integer */
+.highlight .mo  { color: #d75f5f; } /* Literal.Number.Oct */
 .highlight .sb  { color: #99ad6a; } /* Literal.String.Backtick */
 .highlight .sc  { color: #99ad6a; } /* Literal.String.Char */
 .highlight .sd  { color: #99ad6a; } /* Literal.String.Doc */
