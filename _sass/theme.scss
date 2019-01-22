@@ -160,6 +160,11 @@ a[href] {
 	}
 }
 
+a[href].no-style {
+	color: inherit;
+	text-decoration: inherit;
+}
+
 div.highlight {
 	display: inline;
 }
@@ -189,6 +194,26 @@ hr {
 
 	border: 0px;
 	border-bottom: 1px $fade-col solid;
+}
+
+table {
+	border-collapse: collapse;
+
+	thead > * {
+		background-color: $bg-col;
+	}
+
+	tbody > tr:nth-child(even) {
+		background-color: $bg-col;
+	}
+
+	td, th {
+		padding: 4px 7px;
+	}
+
+	th {
+		border-bottom: 2px $fg-col solid;
+	}
 }
 
 ul.plain-list,
@@ -225,6 +250,10 @@ li {
 
 .fade-out {
 	opacity: 0.3;
+}
+
+.clear {
+	clear: both;
 }
 
 // Animations
