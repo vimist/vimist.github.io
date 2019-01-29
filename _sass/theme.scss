@@ -227,6 +227,10 @@ ol.plain-list {
 	}
 }
 
+ul > li {
+	list-style-type: "> ";
+}
+
 .columns {
 	display: flex;
 	flex-wrap: wrap;
@@ -242,10 +246,6 @@ ol.plain-list {
 
 .right-pad {
 	margin-right: $padding;
-}
-
-li {
-	list-style-type: "> ";
 }
 
 .fade-out {
