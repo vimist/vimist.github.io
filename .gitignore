@@ -1,4 +1,9 @@
 _site
+_drafts/*
+
 .sass-cache
+
 *.swp
 *.swo
+
+!_drafts/.gitkeep
