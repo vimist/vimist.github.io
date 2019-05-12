@@ -5,6 +5,6 @@
 	{{ include.post.excerpt }}
 	<div class="columns">
 		<a href="{{ include.post.url }}" class="expand">Read More...</a>
-		<span class="fade-out">{{ post.date | date: "%F" }}</span>
+		<span class="fade-out">{{ include.post.date | date: "%F" }}</span>
 	</div>
 </section>
