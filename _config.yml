@@ -4,7 +4,7 @@ description: Exploring the elegance in technology.
 excerpt_separator: <!-- more -->
 
 markdown: kramdown
-kramdown: 
+kramdown:
   smart_quotes:
     - apos
     - apos
