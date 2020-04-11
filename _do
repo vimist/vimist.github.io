@@ -9,7 +9,7 @@ develop()
 		--volume /tmp/jekyll-blog:/usr/local/bundle \
 		--publish 35729:35729 \
 		--publish 4000:4000 \
-		jekyll/jekyll:3.8 \
+		jekyll/jekyll:3.8.5 \
 		jekyll serve --draft --livereload
 }
 
