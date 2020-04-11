@@ -28,7 +28,7 @@ body {
 	color: $fg-col;
 
 	font-size: $font-size;
-	font-family: monospace;
+	font-family: sans-serif;
 }
 
 section.sidebar {
@@ -228,7 +228,7 @@ ol.plain-list {
 }
 
 ul > li {
-	list-style-type: "> ";
+	list-style-type: "- ";
 }
 
 .columns {
@@ -302,6 +302,10 @@ ul > li {
 			li {
 				display: inline;
 				white-space: normal;
+			}
+
+			li:not(:last-child)::after {
+				content: ', ';
 			}
 		}
 	}
