@@ -264,6 +264,8 @@ ul > li {
 }
 
 .flashing-prompt {
+	font-family: monospace;
+
 	&::after {
 		content: "\2588";
 		color: transparent;
