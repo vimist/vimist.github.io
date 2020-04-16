@@ -3,7 +3,8 @@ $fg-col: darken(invert($bg-col), 10);
 $light-bg-col: lighten($bg-col, 4);
 $fade-col: rgba($fg-col, 0.2);
 
-$link-color: #356DF5;
+$link-color: #6584DF;
+$visited-color: #D9619F;
 
 $col1: #fad07a;
 $col2: #8197bf;
@@ -155,8 +156,14 @@ aside {
 a[href] {
 	color: $link-color;
 
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
 	&:visited {
-		color: adjust-hue($link-color, 80)
+		color: $visited-color;
 	}
 }
 
