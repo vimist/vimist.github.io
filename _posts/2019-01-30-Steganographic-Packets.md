@@ -35,7 +35,7 @@ The Encoding Scheme
 -------------------
 
 Let's say we wanted to send the data "Hello World!", firstly we'd need to get
-their numeric values so we can really see what we're dealing with:
+each characters numeric value to see what we're dealing with:
 
 ```
 H   e   l   l   o       W   o   r   l   d   !
@@ -49,7 +49,7 @@ to kill us** if we only leave 1 millisecond between different values. Perhaps we
 could give ourselves more time; 720 milliseconds for an "H", 1010 milliseconds
 for an "e", etc. That sounds like reasonable times for a LAN, we should be able
 to recover our data even with a bit of jitter, it would be pretty slow though.
-Say we wanted to send a "ÿ" (from the [Latin 1][latin1] character encoding),
+Say we wanted to send a "ÿ" (from the [Latin 1][latin1] character set),
 we'd have to wait 2.55 seconds...  **ouch**!
 
 Obviously we're not going for throughput here, **but we can definitely do
@@ -65,8 +65,8 @@ different values: 1111<sub>2</sub> = 15<sub>10</sub> (+1 for 0)
 That's much better!
 </aside>
 
-Instead of sending full bytes with 256 different value to encode, maybe we could
-send half bytes (4 bits, [nibbles][nibble]) instead. This would reduce the
+Instead of sending full bytes (256 different values), maybe we could send 
+half bytes (4 bits, [nibbles][nibble]) instead. This would reduce the
 number of combinations we need to represent by a factor of 16!
 
 <div class="clear"></div>
@@ -80,8 +80,8 @@ H         e         l         l         o                   W         o         
 
 Encoding our data this way does mean sending 2 packets per byte of data though,
 so we'd end up having to send `N * 2 + 1` packets (where `N` is the number of
-bytes we want to send), but I think that's a reasonable compromise for my use
-case. Depending on the specific application, you might want to alter this.
+bytes we want to send), but I think that's a reasonable compromise in this
+instance. Depending on the specific application, you might want to alter this.
 
 So here it is, this is our encoding scheme, the nibble we want to send on the
 left and the interval we should use to represent that data on the right:
@@ -168,7 +168,7 @@ To recover our data, we do the following:
 1. Calculate the interval between packets.
 2. Find the closest value in our encoding scheme.
 3. Store the looked up value until we have a full 8 bits (a byte, two nibbles).
-4. Convert our 8 bits to decimal (implicit when programmed).
+4. Convert our 8 bits to decimal.
 5. Look up the value to recover the original byte value.
 
 |Interval|Closest Encoding|Looked Up Value|Full Byte|Decimal Value|ASCII|
@@ -201,7 +201,7 @@ To recover our data, we do the following:
 There's our recovered message, `Hello World!`!
 
 Mathematically, with this encoding scheme, if we were sending every byte once
-(0 - 255) it would take 43520 milliseconds (43.52 seconds) to send.  A
+(0 - 255) it would take 43520 milliseconds (43.52 seconds) to send. A
 staggering 0.005744 KBps or 5.882 Bps (assuming a perfect distribution)!
 
 We can do Better!
@@ -210,11 +210,11 @@ We can do Better!
 Now, if I _really_ wanted to use this to exfiltrate data from a machine,
 <mark>I'd change a few things</mark> ;)
 
-Firstly, I'd try to understand the data that I'm wanting to exfiltrate, so that
-I could <mark>re-order the encoding scheme</mark> to have the most common bytes
-with the lowest interval to increase transmission speed.
+Firstly, I'd perform frequency analysis on the data that I want to exfiltrate, 
+so that I could <mark>re-order the encoding scheme</mark> to assign the most 
+common bytes to the smallest interval (to increase transmission speed).
 
-Secondly, I'd <mark>put some payload data in my packets</mark>, probably just
+Secondly, I'd <mark>put some payload data in my packets</mark>, maybe just
 random data (or maybe decoy data), this would make it look like the payload was
 in the packet to throw off anyone looking.
 
@@ -228,9 +228,9 @@ time.
 
 Lastly, and you'd have to be really serious to go this far, but lastly, <mark>I
 wouldn't send any packets at all</mark>... I would hook in to the network stack
-of the machine and just fractionally delay existing outbound packets to
-correspond to our encoding scheme. This would require you to have visibility of
-all outbound traffic though, so may not be as easy to recover the data, but if
+of the machine and fractionally delay existing outbound packets to correspond 
+to our encoding scheme. This would require you to have visibility of all 
+outbound traffic though, so may not be as easy to recover the data, but if
 you did...!
 
 [steganography]: https://en.wikipedia.org/wiki/Steganography
