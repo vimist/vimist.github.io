@@ -100,7 +100,9 @@ section.post-overview {
 		flex: 1;
 		text-align: right;
 
-		&::after { content: " >"; }
+		&::after {
+			content: " >";
+		}
 	}
 }
 
@@ -178,11 +180,11 @@ a[href] {
 	&:visited {
 		color: $visited-color;
 	}
-}
 
-a[href].no-style {
-	color: inherit;
-	text-decoration: inherit;
+	&.no-style {
+		color: inherit;
+		text-decoration: inherit;
+	}
 }
 
 div.highlight {
@@ -279,7 +281,7 @@ button {
 
 // Other
 
-.right-pad {
+.right-marg {
 	margin-right: $padding;
 }
 
