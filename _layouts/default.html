@@ -12,6 +12,10 @@
 		  gtag('js', new Date());
 		  gtag('config', 'UA-9859348-9');
 		</script>
+
+		{% for script in page.scripts %}
+			<script src="{{ script | relative_path }}"></script>
+		{% endfor %}
 	</head>
 	<body>
 		<section class="sidebar">

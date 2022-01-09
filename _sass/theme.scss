@@ -73,6 +73,19 @@ section.post-overview {
 	}
 }
 
+.columns {
+	display: flex;
+	flex-wrap: wrap;
+
+	&.vertical-align {
+		align-items: center;
+	}
+
+	& > .expand {
+		flex: 1;
+	}
+}
+
 .previous-next {
 	display: flex;
 
@@ -238,21 +251,40 @@ ul > li {
 	list-style-type: "- ";
 }
 
-.columns {
-	display: flex;
-	flex-wrap: wrap;
+// Forms
 
-	&.vertical-align {
-		align-items: center;
-	}
+input[type="text"],
+input[type="email"],
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	padding: 0.5rem 0.5rem;
 
-	> .expand {
-		flex: 1;
+	background-color: $bg-col;
+	color: $fg-col;
+	border: 0px;
+
+	&:focus {
+		outline: 1px solid $col2;
 	}
 }
 
+button {
+	padding: 0.5rem 0.5rem;
+
+	background-color: $fg-col;
+	color: $bg-col;
+	border: 0px;
+}
+
+// Other
+
 .right-pad {
 	margin-right: $padding;
+}
+
+.bottom-marg {
+	margin-bottom: $padding;
 }
 
 .fade-out {
@@ -282,6 +314,33 @@ ul > li {
 		animation-timing-function: steps(1, start);
 		animation-iteration-count: 8;
 	}
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.spinner::before {
+	content: '';
+	display: inline-block;
+
+	width: 1ex;
+	height: 1ex;
+
+	border: 2px solid $bg-col;
+	border-radius: 1ex;
+	border-right-color: transparent;
+
+	animation-name: spin;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
 }
 
 // Mobile

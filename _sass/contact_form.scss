@@ -1,0 +1,16 @@
+#contact-form {
+	.columns {
+		& > :first-child {
+			min-width: 120px;
+		}
+
+		& > :nth-child(2) {
+			flex: 1;
+			min-width: 240px;
+		}
+	}
+
+	textarea {
+		height: 7rem;
+	}
+}
