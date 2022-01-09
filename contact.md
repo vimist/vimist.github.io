@@ -1,5 +1,5 @@
 ---
-title: Contact / About
+title: Contact
 layout: default
 menu_order: 20
 
