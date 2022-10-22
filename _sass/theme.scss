@@ -116,6 +116,11 @@ h1, h2, h3 {
 	clear: both;
 }
 
+img, video {
+	display: block;
+	margin: auto;
+}
+
 mark {
 	background-color: inherit;
 	color: $col1;
@@ -238,6 +243,11 @@ table {
 	}
 }
 
+ul,
+ol {
+	padding-left: 2em;
+}
+
 ul.plain-list,
 ol.plain-list {
 	padding: 0px;
@@ -291,6 +301,23 @@ button {
 
 .fade-out {
 	opacity: 0.3;
+}
+
+.float-left {
+	float: left;
+	margin: 0px $padding $padding 0px;
+}
+
+.float-right {
+	float: right;
+	margin: 0px 0px $padding $padding;
+}
+
+.float-left,
+.float-right {
+	& > *:last-child {
+		margin-bottom: 0px;
+	}
 }
 
 .clear {
