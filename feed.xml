@@ -1,5 +1,6 @@
 ---
 layout: null
+show_in_menu: false
 ---
 
 <?xml version="1.0"?>
