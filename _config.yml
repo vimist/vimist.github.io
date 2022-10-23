@@ -3,6 +3,8 @@ description: Exploring the elegance in technology.
 
 excerpt_separator: <!-- more -->
 
+theme: null
+
 markdown: kramdown
 kramdown:
   smart_quotes:
