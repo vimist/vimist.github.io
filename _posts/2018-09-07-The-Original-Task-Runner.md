@@ -277,10 +277,10 @@ If you're going to use this on a daily basis, typing `./script.sh` is
 probably going to get tiresome quite quickly, so here's a couple of ideas to
 help:
 
- - Call the script something **short and relevant** like `do`, you don't need the
+ - Call the script something **short and relevant** like `run`, you don't need the
    `.sh` extension.
- - Add an alias (`alias do=./do`) in your `.bashrc` file, so you can just type
-   `do` rather than `./do`.
+ - Add an alias (`alias run=./run`) in your `.bashrc` file, so you can just type
+   `run` rather than `./run`.
 
 
 [dijkstra]: https://en.wikipedia.org/wiki/Edsger_W._Dijkstra
